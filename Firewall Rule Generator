@@ -1,0 +1,16 @@
+import os
+
+def generate_firewall_rule(protocol, port, source_ip, destination_ip):
+    rule = "iptables -A INPUT -p " + protocol + " --dport " + port + " -s " + source_ip + " -d " + destination_ip + " -j ACCEPT"
+    return rule
+
+protocol = input("Enter the protocol (tcp/udp): ")
+port = input("Enter the port number: ")
+source_ip = input("Enter the source IP address: ")
+destination_ip = input("Enter the destination IP address: ")
+
+rule = generate_firewall_rule(protocol, port, source_ip, destination_ip)
+
+print("The firewall rule is: ")
+print(rule)
+os.system(rule)
