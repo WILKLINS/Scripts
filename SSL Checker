@@ -1,0 +1,16 @@
+import ssl
+import socket
+
+def check_ssl_cert(hostname: str, port: int):
+try:
+cert = ssl.get_server_certificate((hostname, port))
+print(f'SSL certificate for {hostname}:{port} is valid.')
+return cert
+except ssl.SSLError as e:
+print(f'SSL certificate for {hostname}:{port} is not valid. Error: {e}')
+return None
+
+hostname = "[www.google.com](http://www.google.com/)"
+port = 443
+
+check_ssl_cert(hostname, port)
