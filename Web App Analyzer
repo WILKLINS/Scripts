@@ -1,0 +1,34 @@
+
+This script uses the **`requests`** library to make a GET request to a given URL and the **`BeautifulSoup`** library to parse the HTML content of the page. It then uses the **`find_all`** method from BeautifulSoup to search for specific HTML elements (links, images, forms) and prints the number of each type of element found on the page.
+
+This script will give you an idea of the number of links, images and forms on the webpage but it doesn't check the validity of the links, images or forms.
+You can add more functionality as per your requirement.
+
+import requests
+from bs4 import BeautifulSoup
+
+def analyze_web_app(url):
+# Make a GET request to the URL
+response = requests.get(url)
+
+```
+# Parse the HTML content
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Print the number of links on the page
+links = soup.find_all('a')
+print(f'Number of links: {len(links)}')
+
+# Print the number of images on the page
+images = soup.find_all('img')
+print(f'Number of images: {len(images)}')
+
+# Print the number of forms on the page
+forms = soup.find_all('form')
+print(f'Number of forms: {len(forms)}')
+
+```
+
+# Example usage
+
+analyze_web_app('[https://www.example.com](https://www.example.com/)')
